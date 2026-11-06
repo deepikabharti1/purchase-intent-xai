@@ -1,0 +1,27 @@
+data_path: dataset/ecommerce_sessions.csv
+random_seed: 42
+test_size: 0.2
+target: Converted
+threshold: 0.5
+
+categorical_columns:
+  - Month
+  - VisitorType
+  - OperatingSystems
+  - Browser
+  - Region
+  - TrafficType
+
+skewed_columns:
+  - Administrative_Duration
+  - Informational_Duration
+  - ProductRelated_Duration 
+
+numeric_columns:
+  - Administrative 
+  - Informational 
+  - ProductRelated 
+  - BounceRates
+  - ExitRates
+  - PageValues
+  - SpecialDay
