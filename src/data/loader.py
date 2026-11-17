@@ -27,5 +27,15 @@ def load_data(path=None):
     if missing:
         logger.error(f"missing columns:{missing}")
         raise ValueError(f"missing columns:{missing}")
+
+    duplicates = df.duplicated().sum()
+    if duplicates > 0:
+        logger.warning(f"found {duplicates} duplicate rows")
+
+    nulls = df.isnull().sum()
+    nulls = nulls[nulls > 0]
+    if not nulls.empty:
+        logger.warning(f"missing values found: {nulls.to_dict()}")
+
     logger.info(f"loaded data with shape {df.shape}")
     return df
